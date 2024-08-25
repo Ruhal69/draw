@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborative Drawing App</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            flex-direction: column;
+        }
+
+        canvas {
+            border: 1px solid #000;
+            background-color: white;
+        }
+
+        .controls {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .color-button {
+            width: 50px;
+            height: 50px;
+            margin: 0 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        select {
+            margin-left: 20px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="drawingCanvas" width="800" height="600"></canvas>
+    <div class="controls">
+        <!-- Color buttons -->
+        <button class="color-button" style="background-color: black;" onclick="changeColor('black')"></button>
+        <button class="color-button" style="background-color: red;" onclick="changeColor('red')"></button>
+        <button class="color-button" style="background-color: green;" onclick="changeColor('green')"></button>
+        <button class="color-button" style="background-color: blue;" onclick="changeColor('blue')"></button>
+        <button class="color-button" style="background-color: yellow;" onclick="changeColor('yellow')"></button>
+        <button class="color-button" style="background-color: purple;" onclick="changeColor('purple')"></button>
+        
+        <!-- Thickness dropdown -->
+        <select id="thickness" onchange="changeThickness(this.value)">
+            <option value="2">Thin</option>
+            <option value="4">Medium Thin</option>
+            <option value="6">Medium</option>
+            <option value="8">Thick</option>
+            <option value="10">Extra Thick</option>
+        </select>
+    </div>
+
+    <!-- Include Socket.IO -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/public/script.js"></script>
+</body>
+</html>
